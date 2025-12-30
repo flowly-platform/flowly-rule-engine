@@ -8,12 +8,12 @@ import java.util.UUID;
 
 public class Rule {
 
-    private UUID id;
-    private String trigger;
-    private MatchType match;
-    private List<Condition> conditions;
-    private List<Action> actions;
-    private boolean enabled;
+    private final UUID id;
+    private final String trigger;
+    private final MatchType match;
+    private final List<Condition> conditions;
+    private final List<Action> actions;
+    private final boolean enabled;
 
     public Rule(UUID id, String trigger, MatchType match, List<Condition> conditions, List<Action> actions, boolean enabled) {
         this.id = (id == null) ? UUID.randomUUID() : id;
@@ -25,7 +25,7 @@ public class Rule {
     }
 
     private String requireNotBlank(String value, String message) {
-        if (value.isBlank() || value == null){
+        if (value == null || value.isBlank()){
             throw new IllegalArgumentException(message);
         }
         return value;
